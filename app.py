@@ -1,3 +1,5 @@
+from logger import save_log
+from email_generator import generate_email
 import pandas as pd
 from datetime import datetime
 
@@ -27,6 +29,7 @@ def get_stage(days_overdue):
 
 # Calculate overdue days and stages
 for index, row in df.iterrows():
+
     days_overdue = (today - row["due_date"]).days
     stage = get_stage(days_overdue)
 
@@ -35,3 +38,29 @@ for index, row in df.iterrows():
     print(f"Client Name    : {row['client_name']}")
     print(f"Days Overdue   : {days_overdue}")
     print(f"Reminder Stage : {stage}")
+
+    # Skip emails for escalated cases
+    if stage == "Escalate to Finance Team":
+        print("Status : Escalated for manual review")
+        save_log(row["invoice_no"], row["client_name"], days_overdue, stage, "Escalated")
+        continue
+
+    # Generate AI email
+    email = generate_email(
+        row["client_name"],
+        row["invoice_no"],
+        row["amount_due"],
+        row["due_date"].date(),
+        days_overdue,
+        stage
+    )
+
+    print("\nGenerated Email:\n")
+    print(email)
+    save_log(
+    row["invoice_no"],
+    row["client_name"],
+    days_overdue,
+    stage,
+    "Email Generated"
+)

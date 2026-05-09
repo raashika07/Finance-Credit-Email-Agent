@@ -1,0 +1,5 @@
+Timestamp,Invoice Number,Client Name,Days Overdue,Reminder Stage,Status
+2026-05-09 15:17:08.916999,INV001,Rajesh Kumar,8,Stage 2 - Polite Reminder,Email Generated
+2026-05-09 15:17:08.920988,INV002,Priya Sharma,14,Stage 2 - Polite Reminder,Email Generated
+2026-05-09 15:17:08.924561,INV003,Amit Verma,29,Stage 4 - Final Warning,Email Generated
+2026-05-09 15:17:08.926895,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
