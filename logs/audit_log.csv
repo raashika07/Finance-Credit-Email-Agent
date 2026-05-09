@@ -4,3 +4,19 @@ Timestamp,Invoice Number,Client Name,Days Overdue,Reminder Stage,Status
 2026-05-09 15:17:08.924561,INV003,Amit Verma,29,Stage 4 - Final Warning,Email Generated
 2026-05-09 15:17:08.926895,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
 2026-05-09 15:21:49.139012,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:34:44.681155,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:35:42.148287,INV001,Rajesh Kumar,8,Stage 2 - Polite Reminder,Email Generated
+2026-05-09 15:35:42.168116,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:35:54.319945,INV003,Amit Verma,29,Stage 4 - Final Warning,Email Generated
+2026-05-09 15:35:54.329067,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:37:05.527011,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:37:05.540717,INV007,Rohit Jain,42,Escalate to Finance Team,Escalated
+2026-05-09 15:37:05.547108,INV008,Ayesha Khan,38,Escalate to Finance Team,Escalated
+2026-05-09 15:37:26.036896,INV002,Priya Sharma,14,Stage 2 - Polite Reminder,Email Generated
+2026-05-09 15:37:26.064904,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:37:26.092249,INV007,Rohit Jain,42,Escalate to Finance Team,Escalated
+2026-05-09 15:37:26.104073,INV008,Ayesha Khan,38,Escalate to Finance Team,Escalated
+2026-05-09 15:37:39.534370,INV004,Neha Singh,50,Escalate to Finance Team,Escalated
+2026-05-09 15:37:39.543545,INV005,Karan Mehta,4,Stage 1 - Warm Reminder,Email Generated
+2026-05-09 15:37:39.554067,INV007,Rohit Jain,42,Escalate to Finance Team,Escalated
+2026-05-09 15:37:39.560034,INV008,Ayesha Khan,38,Escalate to Finance Team,Escalated

@@ -9,7 +9,17 @@ from logger import save_log
 st.set_page_config(page_title="Finance Credit Email Agent",
                    layout="wide")
 
-st.title("📧 Finance Credit Follow-Up Email Agent")
+st.title("🚀 CrediFlow AI")
+st.markdown("""
+### AI-Powered Automated Invoice Follow-Up & Escalation System
+
+CrediFlow AI helps finance teams:
+- Detect overdue invoices
+- Automate payment follow-ups
+- Escalate critical payment delays
+- Generate professional reminder emails
+- Maintain communication audit logs
+""")
 
 # Load CSV
 df = pd.read_csv("data/invoices.csv")
@@ -18,6 +28,27 @@ df = pd.read_csv("data/invoices.csv")
 df["due_date"] = pd.to_datetime(df["due_date"])
 
 today = datetime.today()
+# Dashboard Metrics
+total_invoices = len(df)
+
+overdue_count = 0
+escalated_count = 0
+
+for index, row in df.iterrows():
+
+    overdue_days = (today - row["due_date"]).days
+
+    if overdue_days > 0:
+        overdue_count += 1
+
+    if overdue_days > 30:
+        escalated_count += 1
+
+col1, col2, col3 = st.columns(3)
+
+col1.metric("📄 Total Invoices", total_invoices)
+col2.metric("⚠ Overdue Invoices", overdue_count)
+col3.metric("🚨 Escalated Cases", escalated_count)
 
 # Escalation logic
 def get_stage(days_overdue):
@@ -49,7 +80,7 @@ for index, row in df.iterrows():
 
     st.divider()
 
-    st.subheader(f"Invoice: {row['invoice_no']}")
+    st.subheader(f"📌 Invoice: {row['invoice_no']}")
 
     col1, col2 = st.columns(2)
 
@@ -77,7 +108,7 @@ for index, row in df.iterrows():
         continue
 
     # Generate email button
-    if st.button(f"Generate Email for {row['invoice_no']}"):
+    if st.button(f"📧 Generate Email - {row['invoice_no']}"):
 
         email = generate_email(
             row["client_name"],
@@ -88,11 +119,13 @@ for index, row in df.iterrows():
             stage
         )
 
+        st.markdown("### Generated Follow-Up Email")
+
         st.text_area(
-            "Generated Email",
-            email,
-            height=300
-        )
+        "",
+        email,
+        height=300
+        )   
 
         save_log(
             row["invoice_no"],
@@ -102,4 +135,11 @@ for index, row in df.iterrows():
             "Email Generated"
         )
 
-        st.success("✅ Email generated and logged successfully")
+        st.success("✅ Follow-up email generated and audit log updated")
+
+
+st.divider()
+
+st.caption(
+    "CrediFlow AI • Automated Finance Follow-Up System • Internship Project 2026"
+)
