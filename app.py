@@ -23,6 +23,23 @@ CrediFlow AI helps finance teams:
 
 # Load CSV
 df = pd.read_csv("data/invoices.csv")
+# Required CSV columns
+required_columns = [
+    "invoice_no",
+    "client_name",
+    "amount_due",
+    "due_date",
+    "contact_email",
+    "follow_up_count"
+]
+
+# Validate CSV structure
+for column in required_columns:
+
+    if column not in df.columns:
+
+        st.error(f"Missing required column: {column}")
+        st.stop()
 
 # Convert dates
 df["due_date"] = pd.to_datetime(df["due_date"])
@@ -71,12 +88,27 @@ def get_stage(days_overdue):
     else:
         return "Not Overdue"
 
+
+# Basic email validation
+def is_valid_email(email):
+
+    return "@" in str(email) and "." in str(email)
+
+# Sanitize text input
+def sanitize_input(text):
+
+    return str(text).replace("\n", " ").strip()
+
+MAX_EMAILS = 50
+generated_count = 0
+
 # Main processing
 for index, row in df.iterrows():
 
     days_overdue = (today - row["due_date"]).days
 
     stage = get_stage(days_overdue)
+    # Basic email validation
 
     st.divider()
 
